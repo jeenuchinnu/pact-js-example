@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: pacttest
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: pacttest
@@ -17,7 +17,7 @@ spec:
         image: chinnudocker555/pacttest
         imagePullPolicy: Always
         ports:
-        - containerPort: 5000
+        - containerPort: 3000
 # service type loadbalancer       
 ---
 apiVersion: v1
@@ -29,6 +29,6 @@ spec:
     app: pacttest
   ports:
     - protocol: TCP
-      port: 5000
-      targetPort: 5000
+      port: 3000
+      targetPort: 3000
   type: LoadBalancer
